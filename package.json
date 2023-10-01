@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "vega-datasets": "^2.7.0",
+    "vega-embed": "^6.22.2",
+    "vega-lite": "^5.14.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {

@@ -1,30 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import vegaEmbed from "vega-embed";
+const vlSpec = {
+  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  data: {
+    values: [
+      { a: "C", b: 2 },
+      { a: "C", b: 7 },
+      { a: "C", b: 4 },
+      { a: "D", b: 1 },
+      { a: "D", b: 2 },
+      { a: "D", b: 6 },
+      { a: "E", b: 8 },
+      { a: "E", b: 4 },
+      { a: "E", b: 7 },
+    ],
+  },
+  mark: "bar",
+  encoding: {
+    y: { field: "a", type: "nominal" },
+    x: {
+      aggregate: "average",
+      field: "b",
+      type: "quantitative",
+      axis: {
+        title: "Average of b",
+      },
+    },
+  },
+};
+
+// Embed the visualization in the container with id `vis`
+vegaEmbed("#vis", vlSpec);
 </script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <div id="vis" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
