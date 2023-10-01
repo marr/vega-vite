@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
 import './style.css'
-import App from './Dates.vue'
+import App from './Geo.vue'
 
 createApp(App).mount('#app')

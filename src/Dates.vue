@@ -11,34 +11,38 @@ data["earthquakes.json"]().then((earthquakes) => {
       name: "foo",
     },
     mark: "circle",
-    "params": [  // An array of named parameters.
-    {
-      "name": 'range',
-      "select": {
-        "type": 'interval',
-        "encodings": ["x"]
-      }
-    }
-  ],
+    params: [
+      // An array of named parameters.
+      {
+        name: "range",
+        select: {
+          type: "interval",
+          encodings: ["x"],
+        },
+      },
+    ],
     transform: [{ filter: "datum.properties.mag > 5" }],
     encoding: {
       y: {
         field: "properties.mag",
         type: "quantitative",
         axis: { title: "Magnitude" },
-        scale: { domain: [5, 7] }
+        scale: { domain: [5, 7] },
       },
       fillOpacity: { value: 0.4 },
-      tooltip: [{
-        field: "properties.time",
-        type: "temporal",
-        timeUnit: "yearmonthdatehoursminutesseconds",
-        title: 'Time'
-      },{
-        field: 'properties.mag',
-        type: 'quantitative',
-        title: 'Magnitude'
-      }],
+      tooltip: [
+        {
+          field: "properties.time",
+          type: "temporal",
+          timeUnit: "yearmonthdatehoursminutesseconds",
+          title: "Time",
+        },
+        {
+          field: "properties.mag",
+          type: "quantitative",
+          title: "Magnitude",
+        },
+      ],
       x: {
         field: "properties.time",
         type: "temporal",

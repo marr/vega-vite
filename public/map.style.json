@@ -1,0 +1,125 @@
+{
+  "version": 8,
+  "name": "MapLibre Demo Tiles",
+  "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
+  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+  "sources": {
+    "maplibre-demotiles": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#D8F2FF"
+      },
+      "filter": ["all"],
+      "layout": {
+        "visibility": "visible"
+      },
+      "maxzoom": 24
+    },
+    {
+      "id": "coastline",
+      "source": "maplibre-demotiles",
+      "source-layer": "countries",
+      "type": "line",
+      "paint": {
+        "line-blur": 0.5,
+        "line-color": "#198EC8",
+        "line-width": {
+          "stops": [
+            [0, 1],
+            [6, 2],
+            [14, 3],
+            [22, 6]
+          ]
+        }
+      },
+      "filter": ["all"],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "maxzoom": 24,
+      "minzoom": 0
+    },
+    {
+      "id": "countries-fill",
+      "type": "fill",
+      "paint": {
+        "fill-color": [
+          "match",
+          ["get", "ADM0_A3"],
+          ["USA"],
+          "#0c6",
+          "#D6C7FF"
+        ]
+      },
+      "filter": ["all"],
+      "layout": {
+        "visibility": "visible"
+      },
+      "source": "maplibre-demotiles",
+      "maxzoom": 24,
+      "source-layer": "countries"
+    },
+    {
+      "id": "countries-label",
+      "type": "symbol",
+      "paint": {
+        "text-color": "rgba(8, 37, 77, 1)",
+        "text-halo-blur": {
+          "stops": [
+            [2, 0.2],
+            [6, 0]
+          ]
+        },
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": {
+          "stops": [
+            [2, 1],
+            [6, 1.6]
+          ]
+        }
+      },
+      "filter": ["all"],
+      "layout": {
+        "text-font": ["Open Sans Semibold"],
+        "text-size": {
+          "stops": [
+            [2, 10],
+            [4, 12],
+            [6, 16]
+          ]
+        },
+        "text-field": {
+          "stops": [
+            [2, "{ABBREV}"],
+            [4, "{NAME}"]
+          ]
+        },
+        "visibility": "visible",
+        "text-max-width": 10,
+        "text-transform": {
+          "stops": [
+            [0, "uppercase"],
+            [2, "none"]
+          ]
+        }
+      },
+      "source": "maplibre-demotiles",
+      "maxzoom": 24,
+      "minzoom": 2,
+      "source-layer": "centroids"
+    }
+  ],
+  "bearing": 0,
+  "center": [-70.81447095562953, 41.97431913275241],
+  "pitch": 47.5,
+  "zoom": 7.85
+}
