@@ -15,7 +15,8 @@
     "vega-datasets": "^2.7.0",
     "vega-embed": "^6.23.0",
     "vega-lite": "^5.16.1",
-    "vue": "^3.3.7"
+    "vue": "^3.3.7",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",

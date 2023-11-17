@@ -1,37 +1,10 @@
-<script setup lang="ts">
-import vegaEmbed from "vega-embed";
-const vlSpec = {
-  $schema: "https://vega.github.io/schema/vega-lite/v5.json",
-  data: {
-    values: [
-      { a: "C", b: 2 },
-      { a: "C", b: 7 },
-      { a: "C", b: 4 },
-      { a: "D", b: 1 },
-      { a: "D", b: 2 },
-      { a: "D", b: 6 },
-      { a: "E", b: 8 },
-      { a: "E", b: 4 },
-      { a: "E", b: 7 },
-    ],
-  },
-  mark: "bar",
-  encoding: {
-    y: { field: "a", type: "nominal" },
-    x: {
-      aggregate: "average",
-      field: "b",
-      type: "quantitative",
-      axis: {
-        title: "Average of b",
-      },
-    },
-  },
-};
-
-// Embed the visualization in the container with id `vis`
-vegaEmbed("#vis", vlSpec);
-</script>
 <template>
-  <div id="vis" />
+  <header style="position: fixed; top: 50px; left: 50px; z-index: 1;">
+    <nav style="display: flex; gap: 5px">
+      <router-link to="/">home</router-link>
+      <router-link to="/geo">geo</router-link>
+      <router-link to="/dates">dates</router-link>
+    </nav>
+  </header>
+  <router-view />
 </template>
