@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ScatterplotLayer } from "@deck.gl/layers";
 import { MapboxLayer } from "@deck.gl/mapbox";
-import { onMounted } from "vue";
+import { onBeforeUnmount, onMounted } from "vue";
 
 const maptilerToken = import.meta.env.VITE_MAPTILER_TOKEN;
 
@@ -74,6 +74,10 @@ function addDeckSources(map) {
   });
 }
 
+onBeforeUnmount(() => {
+  console.log('unmount')
+})
+
 onMounted(() => {
   const map = new maplibregl.Map({
     antialias: true,
@@ -97,13 +101,5 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div>
-    <div id="map" />
-  </div>
+  <div id="map" class="h-[600px] rounded-2xl" />
 </template>
-<style scoped>
-#map {
-  position: absolute;
-  inset: 0;
-}
-</style>

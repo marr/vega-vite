@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import vegaEmbed from "vega-embed";
 import data from "vega-datasets";
+import { watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
 
 data["earthquakes.json"]().then((earthquakes) => {
   // console.log(earthquakes);
@@ -56,10 +58,14 @@ data["earthquakes.json"]().then((earthquakes) => {
 
   // Embed the visualization in the container with id `vis`
   vegaEmbed("#vis", vlSpec).then(({ view }) => {
-    console.log(view.data("foo"));
+    // console.log(view.data("foo"));
   });
 });
+
+const route = useRoute();
+watchEffect(() => console.log(route.params.id));
 </script>
 <template>
   <div id="vis" />
+  <RouterLink to="/charts/1">t</RouterLink>
 </template>

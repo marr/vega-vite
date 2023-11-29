@@ -2,6 +2,17 @@
 import vegaEmbed from "vega-embed";
 const vlSpec = {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+  config: {
+    background: "transparent",
+    style: {
+      bar: {
+        color: "#45010aab",
+      },
+    },
+    view: {
+      fill: "#fff",
+    },
+  },
   data: {
     values: [
       { a: "C", b: 2 },

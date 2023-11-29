@@ -4,9 +4,9 @@ import App from './App.vue';
 import './style.css'
 
 const routes = [
-  { path: '/', component: () => import('./Vega.vue') },
-  { path: '/dates', component: () => import('./Dates.vue') },
-  { path: '/geo', component: () => import('./Geo.vue') },
+  { name: 'home', path: '/', component: () => import('./Home.vue') },
+  { name: 'charts', path: '/charts/:id?', component: () => import('./Chart.vue') },
+  { name: 'map', path: '/map', component: () => import('./Map.vue') },
 ]
 
 const router = createRouter({
