@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PaneSplitter from "./components/PaneSplitter.vue";
 import vegaEmbed from "vega-embed";
 const vlSpec = {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
@@ -44,5 +45,25 @@ const vlSpec = {
 vegaEmbed("#vis", vlSpec);
 </script>
 <template>
-  <div id="vis" />
+  <splitpanes style="height: 600px">
+    <pane min-size="20">1</pane>
+    <pane>
+      <splitpanes horizontal>
+        <pane><div id="vis" /></pane>
+        <pane>3</pane>
+        <pane>4</pane>
+      </splitpanes>
+    </pane>
+    <pane>5</pane>
+  </splitpanes>
 </template>
+<style scoped>
+.splitpanes__pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 5rem;
+}
+</style>

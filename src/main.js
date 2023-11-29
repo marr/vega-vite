@@ -1,6 +1,8 @@
+import { Splitpanes, Pane } from 'splitpanes'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
+import 'splitpanes/dist/splitpanes.css';
 import './style.css'
 
 const routes = [
@@ -14,4 +16,8 @@ const router = createRouter({
   routes
 })
 
-createApp(App).use(router).mount('#app')
+createApp(App)
+  .component('Splitpanes', Splitpanes)
+  .component('Pane', Pane)
+  .use(router)
+  .mount('#app')

@@ -4,6 +4,7 @@ import { MapboxLayer } from "@deck.gl/mapbox";
 import { onBeforeUnmount, onMounted } from "vue";
 
 const maptilerToken = import.meta.env.VITE_MAPTILER_TOKEN;
+console.log(maptilerToken)
 
 function addDeckLayers(map) {
   const layers = map.getStyle().layers;
@@ -70,7 +71,7 @@ function addDeckLayers(map) {
 function addDeckSources(map) {
   map.addSource('openmaptiles', {
       type: 'vector',
-      url: 'https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key=PT04u2C5qXTCxBPacrE4'
+      url: `https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key=${maptilerToken}`
   });
 }
 
@@ -101,5 +102,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div id="map" class="h-[600px] rounded-2xl" />
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div id="map" class="h-[600px] rounded-2xl" />
+  </div>
 </template>

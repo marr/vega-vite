@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import vegaEmbed from "vega-embed";
 import data from "vega-datasets";
-import { watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
+import { watchEffect } from "vue";
+import { useRoute } from "vue-router";
 
 data["earthquakes.json"]().then((earthquakes) => {
   // console.log(earthquakes);
   const vlSpec = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    config: {
+      background: "transparent",
+      style: {
+        bar: {
+          color: "#45010aab",
+        },
+      },
+      view: {
+        fill: "#fff",
+      },
+    },
     data: {
       values: earthquakes.features,
       name: "foo",
@@ -66,6 +77,7 @@ const route = useRoute();
 watchEffect(() => console.log(route.params.id));
 </script>
 <template>
-  <div id="vis" />
-  <RouterLink to="/charts/1">t</RouterLink>
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div id="vis" />
+  </div>
 </template>
